@@ -1,0 +1,35 @@
+/* Notifire.css */
+.notifire-box {
+    width: 100%;
+    border-top: 3px solid #31D42E;
+    border-bottom: 3px solid #31D42E;
+    background: #fff;
+    animation: fadeIn 0.8s ease;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .notifire-box p{
+    color: #31D42E;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  @media(max-width:480px){
+    .notifire-box{
+      display: none;
+    }
+  }
