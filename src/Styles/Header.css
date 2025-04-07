@@ -7,8 +7,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 0px 1% 0px 4%;
-    position: sticky;
-    top: 0;
     z-index: 9999;
 }
 
@@ -28,7 +26,7 @@
     text-decoration: none;
     overflow: hidden;
     z-index: 1;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -57,7 +55,7 @@
 
 
 .navigation .right_menus .seeker_login {
-    padding: 11px 22px;
+    padding: 8px 22px;
     border: 1px solid #dbdbdb;
     border-radius: 10px;
     background-color: transparent;
@@ -83,7 +81,7 @@
     transition: background-color 0.3s ease;
     border-radius: 5px;
     margin-left: 15px;
-    padding: 11px 22px;
+    padding: 8px 22px;
 }
 
 .navigation .right_menus .emp_login:hover {
@@ -93,16 +91,17 @@
 
 .navigation .right_menus .seeker_login,
 .navigation .right_menus .emp_login {
-  white-space: nowrap;
-  font-size: clamp(14px, 1.2vw, 18px);
+    white-space: nowrap;
+    font-size: clamp(14px, 1.2vw, 18px);
 }
 
 .navigation .right_menus a {
     white-space: nowrap;
     font-size: clamp(14px, 1.2vw, 18px);
-    padding: clamp(6px, 1vw, 12px) clamp(12px, 2vw, 20px); /* top-bottom | left-right */
-  }
-  
+    padding: clamp(6px, 1vw, 12px) clamp(12px, 2vw, 20px);
+    /* top-bottom | left-right */
+}
+
 
 
 .navigation .center {
@@ -116,16 +115,16 @@
 
 }
 
-.navigation .center  .job_count {
+.navigation .center .job_count {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-weight: 600;
     font-size: 28px;
     text-align: center;
-  }
-  
-  .navigation .center  .job_count .count {
+}
+
+.navigation .center .job_count .count {
     font-size: 15px;
     font-weight: bold;
     background: linear-gradient(270deg, #ff4d4d, #ffc107, #4caf50, #2196f3, #ff4d4d);
@@ -133,28 +132,30 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: waveColor 4s ease infinite;
-  }
-  
-  @keyframes waveColor {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-
-.navigation .center .menus {
- display: flex;
- align-items: center;
- gap: 18px;
 }
 
-.navigation .center .menus a{
+@keyframes waveColor {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.navigation .center .menus {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.navigation .center .menus a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,7 +163,7 @@
     color: #666666;
 }
 
-.navigation .center .menus a p{
+.navigation .center .menus a p {
     margin-top: 5px;
 }
 
@@ -171,10 +172,10 @@
 
 @media(max-width:991px) {
 
-    
+
     .navigation .center {
         display: flex;
-      
+
 
     }
 
@@ -183,16 +184,17 @@
     }
 }
 
-@media(max-width:900px){
+@media(max-width:900px) {
     .navigation .logo img {
         width: clamp(170px, 15vw, 200px);
     }
-    
-    .navigation .center{
+
+    .navigation .center {
         display: flex;
         align-items: center;
         justify-content: right;
     }
+
     .navigation .center .menus {
         display: flex;
         align-items: center;
@@ -206,8 +208,7 @@
         padding: 0px 5%;
         height: 80px;
         box-shadow: rgba(0, 0, 0, 0.090) 0px 0px 15px 0px;
-       }
-       
-}
+        z-index: 999999;
+    }
 
-  
+}

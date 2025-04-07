@@ -21,7 +21,7 @@ const CustomDropdown = ({
   isOpen,
   onToggle,
   className,
-  hideLabelInList 
+  hideLabelInList
 }) => {
   const [filter, setFilter] = useState('');
 
@@ -39,30 +39,18 @@ const CustomDropdown = ({
       {isOpen && (
         <div className="dropdown-list">
           <div className="search_bar">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-              className="dropdown-search"
-            />
+            <input  type="text" placeholder="Search..." value={filter}  onChange={(e) => setFilter(e.target.value)} className="dropdown-search" />
           </div>
-          <ul>
-            {!hideLabelInList && <p>{label}</p>}
+          
+          <div className="box">
+          {!hideLabelInList && <p>{label}</p>}
             {filtered.map((option, idx) => (
-              <li
-                key={idx}
-                onClick={() => {
-                  onSelect(option);
-                  onToggle();
-                  setFilter('');
-                }}
-              >
+              <div className='option' key={idx}  onClick={() => { onSelect(option);  onToggle();  setFilter(''); }}  >
                 {option}
-              </li>
+              </div>
             ))}
             {filtered.length === 0 && <li className="no-option">No results</li>}
-          </ul>
+          </div>
         </div>
       )}
     </div>
@@ -144,7 +132,7 @@ const Search = () => {
             hideLabelInList={false}
           />
 
-       
+
         </div>
         <button className='find_jobt'>Search</button>
 

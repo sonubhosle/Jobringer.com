@@ -65,53 +65,54 @@ const Filters = () => {
   };
 
   return (
-    <div className='filters'>
+
+
+    <>
       <div className='filter'>
-     
-     <div className="header">
-      <h1>Filters</h1>
-      <p>Keywords</p>
-      <input type="text"  placeholder='Type keywords and press enter'/>
-     </div>
-      
-      <div className="dropdown-container">
-        {/* Search Input */}
-        <Dropdown title="Experience"  isOpen={dropdown1Open}  toggle={() => setDropdown1Open(!dropdown1Open)} >
-          <input type="text"  className="search-box" placeholder="Enter years of experience"  value={search}   onChange={e => setSearch(e.target.value)}/>
-        </Dropdown>
+        <div className="header">
+          <h1>Filters</h1>
+          <p>Keywords</p>
+          <input type="text" placeholder='Type keywords and press enter' />
+        </div>
 
-        {/* Work Modes */}
-        <Dropdown title="Work Mode" isOpen={dropdown2Open}  toggle={() => setDropdown2Open(!dropdown2Open)} >
-          {Object.entries(workModes).map(([key, value]) => (
-            <label key={key} className="checkbox-item">
-              <input type="checkbox"  checked={value} onChange={() => handleCheckboxChange(setWorkModes, key)} />
-              {key.charAt(0).toUpperCase() + key.slice(1)}
-            </label>
-          ))}
-        </Dropdown>
+        <div className="dropdown-container">
+          {/* Search Input */}
+          <Dropdown title="Experience" isOpen={dropdown1Open} toggle={() => setDropdown1Open(!dropdown1Open)} >
+            <input type="text" className="search-box" placeholder="Enter years of experience" value={search} onChange={e => setSearch(e.target.value)} />
+          </Dropdown>
 
-        {/* Job Types */}
-        <Dropdown  title="Job Types"  isOpen={dropdown3Open}  toggle={() => setDropdown3Open(!dropdown3Open)} >
-          {Object.entries(jobTypes).map(([key, value]) => (
-            <label key={key} className="checkbox-item">
-              <input  type="checkbox"  checked={value}  onChange={() => handleCheckboxChange(setJobTypes, key)} />
-              {key.charAt(0).toUpperCase() + key.slice(1)}
-            </label>
-          ))}
-        </Dropdown>
-      </div>
+          {/* Work Modes */}
+          <Dropdown title="Work Mode" isOpen={dropdown2Open} toggle={() => setDropdown2Open(!dropdown2Open)} >
+            {Object.entries(workModes).map(([key, value]) => (
+              <label key={key} className="checkbox-item">
+                <input type="checkbox" checked={value} onChange={() => handleCheckboxChange(setWorkModes, key)} />
+                {key.charAt(0).toUpperCase() + key.slice(1)}
+              </label>
+            ))}
+          </Dropdown>
+
+          {/* Job Types */}
+          <Dropdown title="Job Types" isOpen={dropdown3Open} toggle={() => setDropdown3Open(!dropdown3Open)} >
+            {Object.entries(jobTypes).map(([key, value]) => (
+              <label key={key} className="checkbox-item">
+                <input type="checkbox" checked={value} onChange={() => handleCheckboxChange(setJobTypes, key)} />
+                {key.charAt(0).toUpperCase() + key.slice(1)}
+              </label>
+            ))}
+          </Dropdown>
+        </div>
       </div>
 
 
       <div className="quick_search">
-            <h1>Quick Job search <FiSearch/></h1>
-            <div className="tags">
-                 {
-                    jobTags.map((tag) => <Link key={tag.id}>{tag.name}</Link>)
-                 }
-            </div>
+        <h1>Quick Job search <FiSearch /></h1>
+        <div className="tags">
+          {
+            jobTags.map((tag) => <Link key={tag.id}>{tag.name}</Link>)
+          }
         </div>
       </div>
+    </>
 
   );
 };
