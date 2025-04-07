@@ -1,33 +1,34 @@
+/* Navigation Container */
 .navigation {
     width: 100%;
     height: 80px;
     background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.090) 0px 0px 15px 0px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 0px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0px 1% 0px 4%;
+    padding: 0 1% 0 4%;
     z-index: 9999;
 }
 
+/* Logo */
 .navigation .logo img {
     height: 90px;
-    width: 250px;
     object-fit: contain;
     width: clamp(120px, 15vw, 200px);
 }
 
-
-
+/* Right Menus Common Link Style */
 .navigation .right_menus a {
     position: relative;
-    padding: 10px 20px;
     color: #000;
     text-decoration: none;
     overflow: hidden;
     z-index: 1;
-    font-size: 16px;
     font-weight: 500;
+    white-space: nowrap;
+    font-size: clamp(14px, 1.2vw, 18px);
+    padding: clamp(6px, 1vw, 12px) clamp(12px, 2vw, 20px);
 }
 
 .navigation .right_menus a::after {
@@ -40,31 +41,33 @@
     background-color: #1375AE;
     z-index: -1;
     transition: top 0.3s ease;
-
 }
 
 .navigation .right_menus a:hover::after {
     top: 0;
-
 }
 
 .navigation .right_menus a:hover {
     color: #fff;
 }
 
-
-
-.navigation .right_menus .seeker_login {
+/* Button Styles */
+.navigation .right_menus .seeker_login,
+.navigation .right_menus .emp_login {
+    white-space: nowrap;
+    font-size: clamp(14px, 1.2vw, 18px);
     padding: 8px 22px;
-    border: 1px solid #dbdbdb;
     border-radius: 10px;
-    background-color: transparent;
-    color: #000;
+    font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-    margin-left: 20px;
-    font-size: 18px;
-    font-weight: 500;
+    margin-left: 15px;
+}
+
+.navigation .right_menus .seeker_login {
+    background-color: transparent;
+    border: 1px solid #dbdbdb;
+    color: #000;
 }
 
 .navigation .right_menus .seeker_login:hover {
@@ -72,16 +75,10 @@
 }
 
 .navigation .right_menus .emp_login {
-    font-size: 18px;
-    font-weight: 500;
     background-color: #FFD52C;
     border: none;
     color: #000;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
     border-radius: 5px;
-    margin-left: 15px;
-    padding: 8px 22px;
 }
 
 .navigation .right_menus .emp_login:hover {
@@ -89,21 +86,7 @@
     color: #fff;
 }
 
-.navigation .right_menus .seeker_login,
-.navigation .right_menus .emp_login {
-    white-space: nowrap;
-    font-size: clamp(14px, 1.2vw, 18px);
-}
-
-.navigation .right_menus a {
-    white-space: nowrap;
-    font-size: clamp(14px, 1.2vw, 18px);
-    padding: clamp(6px, 1vw, 12px) clamp(12px, 2vw, 20px);
-    /* top-bottom | left-right */
-}
-
-
-
+/* Center Section (Job Count & Menus) */
 .navigation .center {
     display: none;
     width: 60%;
@@ -111,17 +94,15 @@
     align-items: center;
     justify-content: space-between;
     padding-right: 1%;
-
-
 }
 
 .navigation .center .job_count {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     font-weight: 600;
     font-size: 28px;
-    text-align: center;
 }
 
 .navigation .center .job_count .count {
@@ -135,20 +116,12 @@
 }
 
 @keyframes waveColor {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-
+/* Menu Icons */
 .navigation .center .menus {
     display: flex;
     align-items: center;
@@ -157,26 +130,20 @@
 
 .navigation .center .menus a {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    color: #666666;
+    color: #666;
 }
 
 .navigation .center .menus a p {
     margin-top: 5px;
 }
 
-
-/* Responsive Media Query Endpoints */
-
-@media(max-width:991px) {
-
-
+/* Responsive: Tablet & Mobile */
+@media (max-width: 991px) {
     .navigation .center {
         display: flex;
-
-
     }
 
     .navigation .right_menus {
@@ -184,7 +151,7 @@
     }
 }
 
-@media(max-width:900px) {
+@media (max-width: 900px) {
     .navigation .logo img {
         width: clamp(170px, 15vw, 200px);
     }
@@ -192,23 +159,20 @@
     .navigation .center {
         display: flex;
         align-items: center;
-        justify-content: right;
+        justify-content: flex-end;
     }
 
     .navigation .center .menus {
-        display: flex;
-        align-items: center;
-        gap: 18px;
         position: fixed;
-        bottom: 0 !important;
+        bottom: 0;
         left: 0;
-        background-color: #fff;
         width: 100%;
-        justify-content: space-between;
-        padding: 0px 5%;
         height: 80px;
-        box-shadow: rgba(0, 0, 0, 0.090) 0px 0px 15px 0px;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5%;
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 0px 15px;
         z-index: 999999;
     }
-
 }

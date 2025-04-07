@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import '../../Styles/Search.css';
 import { Link } from 'react-router-dom';
 
@@ -20,18 +20,17 @@ const CustomDropdown = ({
   onSelect,
   isOpen,
   onToggle,
-  className,
-  hideLabelInList
+  className
 }) => {
   const [filter, setFilter] = useState('');
 
-  const filtered = options.filter(opt =>
+  const filteredOptions = options.filter(opt =>
     opt.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
     <div className={`dropdown-wrapper ${className}`}>
-      <div className="dropdown-header" onClick={onToggle}>
+      <div className="dropdown-header" role="button" onClick={onToggle}>
         {selected || label}
         <span className="arrow">{isOpen ? '▲' : '▼'}</span>
       </div>
@@ -39,24 +38,39 @@ const CustomDropdown = ({
       {isOpen && (
         <div className="dropdown-list">
           <div className="search_bar">
-            <input  type="text" placeholder="Search..." value={filter}  onChange={(e) => setFilter(e.target.value)} className="dropdown-search" />
+            <input
+              type="text"
+              placeholder="Search..."
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              className="dropdown-search"
+            />
           </div>
-          
+
           <div className="box">
-          {!hideLabelInList && <p>{label}</p>}
-            {filtered.map((option, idx) => (
-              <div className='option' key={idx}  onClick={() => { onSelect(option);  onToggle();  setFilter(''); }}  >
+            <p>{label}</p>
+            {filteredOptions.map((option, idx) => (
+              <div
+                className="option"
+                key={idx}
+                onClick={() => {
+                  onSelect(option);
+                  onToggle();
+                  setFilter('');
+                }}
+              >
                 {option}
               </div>
             ))}
-            {filtered.length === 0 && <li className="no-option">No results</li>}
+            {filteredOptions.length === 0 && (
+              <li className="no-option">No results</li>
+            )}
           </div>
         </div>
       )}
     </div>
   );
 };
-
 
 const Search = () => {
   const [keyword, setKeyword] = useState('');
@@ -72,23 +86,24 @@ const Search = () => {
       !selectedTags.includes(tag)
   );
 
-  const addTag = (tag) => {
-    setSelectedTags([...selectedTags, tag]);
+  const addTag = useCallback((tag) => {
+    setSelectedTags(prev => [...prev, tag]);
     setKeyword('');
-  };
+  }, []);
 
-  const removeTag = (tagToRemove) => {
-    setSelectedTags(selectedTags.filter(tag => tag !== tagToRemove));
-  };
+  const removeTag = useCallback((tagToRemove) => {
+    setSelectedTags(prev => prev.filter(tag => tag !== tagToRemove));
+  }, []);
 
-  const handleDropdownToggle = (dropdown) => {
-    setOpenDropdown(prev => (prev === dropdown ? null : dropdown));
-  };
+  const handleDropdownToggle = useCallback((dropdownKey) => {
+    setOpenDropdown(prev => (prev === dropdownKey ? null : dropdownKey));
+  }, []);
 
   return (
     <div className="search_container">
       <div className="search_section">
         <h1>Search Job</h1>
+
         <div className="search_input">
           <input
             type="text"
@@ -107,7 +122,6 @@ const Search = () => {
             isOpen={openDropdown === 'location'}
             onToggle={() => handleDropdownToggle('location')}
             className="dropdown-large"
-            hideLabelInList={true}
           />
 
           <CustomDropdown
@@ -118,7 +132,6 @@ const Search = () => {
             isOpen={openDropdown === 'experience'}
             onToggle={() => handleDropdownToggle('experience')}
             className="dropdown-small"
-            hideLabelInList={false}
           />
 
           <CustomDropdown
@@ -129,13 +142,10 @@ const Search = () => {
             isOpen={openDropdown === 'salary'}
             onToggle={() => handleDropdownToggle('salary')}
             className="dropdown-small"
-            hideLabelInList={false}
           />
-
-
         </div>
-        <button className='find_jobt'>Search</button>
 
+        <button className="find_jobt">Search</button>
       </div>
 
       {keyword && (

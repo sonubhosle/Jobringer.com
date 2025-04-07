@@ -9,7 +9,7 @@ import { FaFilter } from "react-icons/fa";
 const Jobs = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [jobsPerPage, setJobsPerPage] = useState(5);
-  const [showFilters, setShowFilters] = useState(true);
+  const [showFilters, setShowFilters] = useState(false);
 
   const totalPages = Math.ceil(jobData.length / jobsPerPage);
   const startIndex = (currentPage - 1) * jobsPerPage;
@@ -50,7 +50,8 @@ const Jobs = () => {
         className="toggle-button"
         onClick={() => setShowFilters((prev) => !prev)}
       >
-       <FaFilter size={20} /> <span>Filters</span>
+        <FaFilter size={20} /> <span>{showFilters ? "Close Filter" : "Filter"}</span>
+
       </button>
 
       <div className={`filters-wrapper ${showFilters ? "show" : "hide"}`}>
