@@ -21,6 +21,7 @@
     .wap-btn{
         opacity: 9;
         visibility: visible;
+        right: 30px;
     }
 }
 
@@ -32,6 +33,6 @@
         font-size: 30px;
         height: 50px;
         width: 50px;
-        right: 30px;
+     
     }
 }
